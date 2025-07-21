@@ -58,8 +58,8 @@
     .expand-btn.expanded { background: #bffff1; color: #338e82;}
     .highlight-pada-interactive { background: #fff688 !important; color: #ca8200 !important; font-weight: bold; border: 1.2px solid #eec216;}
     .highlight-pada-orange { background: #ffebb7 !important; color: #993700 !important; border: 1.5px solid #ffaa1a; font-weight: bold;}
-    .highlight-pada-green { background: #d1f7db !important; color: #128940 !important; border: 1.5px solid #18d658; font-weight: bold;}
-    .clicked-pada-special { background: #b7e6ff !important; color: #00304e !important; border: 1.5px solid #53adee; font-weight: bold;}
+    .highlight-pada-blue { background: #d1f7db !important; color: #1a1379 !important; border: 1.5px solid #856bea; font-weight: bold;}
+    .clicked-pada-special { background: #f67ce2 !important; color: #4b0f3f !important; border: 1.5px solid #de84ca; font-weight: bold;}
     .mode-btn { background: #ede6ff; border: 1.5px solid #7824d1; color: #59537b; border-radius: 6px; font-size: 1.1em; font-weight: bold; margin: 0 8px 5px 0;
                 padding: 7px 17px; cursor: pointer; transition: background 0.15s; }
     .mode-btn.active-mode { background: #7e47e3; color: #fff; border-color: #562b9e; }
@@ -113,9 +113,11 @@
   </form> <br></br>
   <div class="south-chart" id="rasiChart"></div>
   <div class="mode-group">
-    <button id="btn-current" class="mode-btn">தற்போதைய தசா/புக்தி/அந்தரம்</button>
-    <button id="btn-cyclic" class="mode-btn active-mode">ஏக நட்சத்திர/ராசி</button>
+    <button id="btn-current" class="mode-btn active-mode">தற்போதைய தசா/புக்தி/அந்தரம்</button>
+    <button id="btn-cyclic" class="mode-btn">ஏக நட்சத்திர/ராசி</button>
     <button id="btn-range" class="mode-btn">அபிஜித்/வைநாசிகம்/வதை</button>
+    <button id="btn-range1" class="mode-btn">பாவமுனை</button>
+    <button id="btn-range2" class="mode-btn">எதிர் நட்சத்திரம்</button>
   </div>
   
   <div id="main-container">
@@ -144,6 +146,12 @@
       document.getElementById("btn-range").onclick = ()=>{
         mode="range"; setActiveModeBtn('btn-range'); drawChartGrid(); clearAllHighlights();
       };
+       document.getElementById("btn-range1").onclick = ()=>{
+        mode="range1"; setActiveModeBtn('btn-range1'); drawChartGrid(); clearAllHighlights();
+      };
+       document.getElementById("btn-range2").onclick = ()=>{
+        mode="range2"; setActiveModeBtn('btn-range2'); drawChartGrid(); clearAllHighlights();
+      };
       function setActiveModeBtn(activeId) {
         document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active-mode'));
         document.getElementById(activeId)?.classList.add('active-mode');
@@ -157,7 +165,7 @@
       { name: "மிதுனம்", code: "r03", padas: ["மிருகசீரிடம் - பாதம் 3", "மிருகசீரிடம் - பாதம் 4", "திருவாதிரை - பாதம் 1", "திருவாதிரை - பாதம் 2", "திருவாதிரை - பாதம் 3", "திருவாதிரை - பாதம் 4", "புனர்பூசம் - பாதம் 1", "புனர்பூசம் - பாதம் 2", "புனர்பூசம் - பாதம் 3"] },
       { name: "கடகம்", code: "r04", padas: ["புனர்பூசம் - பாதம் 4", "பூசம் - பாதம் 1", "பூசம் - பாதம் 2", "பூசம் - பாதம் 3", "பூசம் - பாதம் 4", "ஆயில்யம் - பாதம் 1", "ஆயில்யம் - பாதம் 2", "ஆயில்யம் - பாதம் 3", "ஆயில்யம் - பாதம் 4"] },
       { name: "சிம்மம்", code: "r05", padas: ["மகம் - பாதம் 1", "மகம் - பாதம் 2", "மகம் - பாதம் 3", "மகம் - பாதம் 4", "பூரம் - பாதம் 1", "பூரம் - பாதம் 2", "பூரம் - பாதம் 3", "பூரம் - பாதம் 4", "உத்திரம் - பாதம் 1"] },
-      { name: "கன்னி", code: "r06", padas: ["உதிரம் - பாதம் 2", "உதிரம் - பாதம் 3", "உதிரம் - பாதம் 4", "ஹஸ்தம் - பாதம் 1", "ஹஸ்தம் - பாதம் 2", "ஹஸ்தம் - பாதம் 3", "ஹஸ்தம் - பாதம் 4", "சித்திரை - பாதம் 1", "சித்திரை - பாதம் 2"] },
+      { name: "கன்னி", code: "r06", padas: ["உத்திரம் - பாதம் 2", "உத்திரம் - பாதம் 3", "உத்திரம் - பாதம் 4", "ஹஸ்தம் - பாதம் 1", "ஹஸ்தம் - பாதம் 2", "ஹஸ்தம் - பாதம் 3", "ஹஸ்தம் - பாதம் 4", "சித்திரை - பாதம் 1", "சித்திரை - பாதம் 2"] },
       { name: "துலாம்", code: "r07", padas: ["சித்திரை - பாதம் 3", "சித்திரை - பாதம் 4", "சுவாதி - பாதம் 1", "சுவாதி - பாதம் 2", "சுவாதி - பாதம் 3", "சுவாதி - பாதம் 4", "விசாகம் - பாதம் 1", "விசாகம் - பாதம் 2", "விசாகம் - பாதம் 3"] },
       { name: "விருச்சிகம்", code: "r08", padas: ["விசாகம் - பாதம் 4", "அனுஷம் - பாதம் 1", "அனுஷம் - பாதம் 2", "அனுஷம் - பாதம் 3", "அனுஷம் - பாதம் 4", "கேட்டை - பாதம் 1", "கேட்டை - பாதம் 2", "கேட்டை - பாதம் 3", "கேட்டை - பாதம் 4"] },
       { name: "தனுசு", code: "r09", padas: ["மூலம் - பாதம் 1", "மூலம் - பாதம் 2", "மூலம் - பாதம் 3", "மூலம் - பாதம் 4", "பூராடம் - பாதம் 1", "பூராடம் - பாதம் 2", "பூராடம் - பாதம் 3", "பூராடம் - பாதம் 4", "உத்திராடம் - பாதம் 1"] },
@@ -197,7 +205,11 @@
             highlightPadaCyclic(i);
           } else if(mode==="range") {
             highlightPadaRange(i);
-          }
+          } else if(mode==="range1") {
+            highlightPadaRange1(i);
+          } else if(mode==="range2") {
+            highlightPadaRange2(i);
+          } 
         });
       }
       if(mode==="current") showCurrentDasaPadaHighlight();
@@ -216,12 +228,21 @@
     }
     function clearRangeHighlights() {
       document.querySelectorAll('.highlight-pada-orange').forEach(e=>e.classList.remove('highlight-pada-orange'));
-      document.querySelectorAll('.highlight-pada-green').forEach(e=>e.classList.remove('highlight-pada-green'));
+      document.querySelectorAll('.highlight-pada-blue').forEach(e=>e.classList.remove('highlight-pada-blue'));
       document.querySelectorAll('.clicked-pada-special').forEach(e=>e.classList.remove('clicked-pada-special'));
       document.querySelectorAll('.box.active-rasi-cyclic-range').forEach(e=>e.classList.remove('active-rasi-cyclic-range'));
     }
+    function clearRange1Highlights() {
+      document.querySelectorAll('.line.highlight-pada-interactive').forEach(e=>e.classList.remove('highlight-pada-interactive'));
+      document.querySelectorAll('.box.active-rasi-cyclic-range1').forEach(e=>e.classList.remove('active-rasi-cyclic-range1'));
+    }
+    function clearRange2Highlights() {
+      document.querySelectorAll('.line.highlight-pada-interactive').forEach(e=>e.classList.remove('highlight-pada-interactive'));
+      document.querySelectorAll('.box.active-rasi-cyclic-range2').forEach(e=>e.classList.remove('active-rasi-cyclic-range2'));
+    }
+    
     function clearAllHighlights() {
-      clearCyclicHighlights(); clearCurrentDasaHighlights(); clearRangeHighlights();
+      clearCyclicHighlights(); clearCurrentDasaHighlights(); clearRangeHighlights(); clearRange1Highlights();clearRange2Highlights();
       ['highlight-dasa','highlight-puthi','highlight-anth'].forEach(cls =>
         document.querySelectorAll(`.line.${cls}`).forEach(e => e.classList.remove(cls))
       );
@@ -282,8 +303,53 @@
       }
       for(let offset=24; offset<=27; offset++) {
         let idx = ((padaIndex-1+offset)%108)+1;
-        if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-green');
+        if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-blue');
       }
+    }
+    // ---- Mode 4: range1 highlight  ----
+    function highlightPadaRange1(padaIndex) {
+      clearAllHighlights();
+      [0,9,18,27,36,45,54,63,72,81,90,99].forEach(offset=>{
+        let idx=((padaIndex-1+offset)%108)+1;
+        if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-interactive');
+      });
+      let rasiIdx=Math.ceil(padaIndex/9); // 1..12
+      document.querySelector(`.box[data-rasi-idx="${rasiIdx}"]`)?.classList.add('active-rasi-cyclic');
+      let rasi2=((rasiIdx+1-1)%12)+1;
+      let rasi3=((rasiIdx+2-1)%12)+1;
+      let rasi4=((rasiIdx+3-1)%12)+1;
+      let rasi5=((rasiIdx+4-1)%12)+1;
+      let rasi6=((rasiIdx+5-1)%12)+1;
+      let rasi7=((rasiIdx+6-1)%12)+1;
+      let rasi8=((rasiIdx+7-1)%12)+1;
+      let rasi9=((rasiIdx+8-1)%12)+1;
+      let rasi10=((rasiIdx+9-1)%12)+1;
+      let rasi11=((rasiIdx+10-1)%12)+1;
+      let rasi12=((rasiIdx+11-1)%12)+1;
+      document.querySelector(`.box[data-rasi-idx="${rasi2}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi3}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi4}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi5}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi6}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi7}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi8}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi9}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi10}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi11}"]`)?.classList.add('active-rasi-cyclic');
+      document.querySelector(`.box[data-rasi-idx="${rasi12}"]`)?.classList.add('active-rasi-cyclic');
+    }
+     // ---- Mode 4: range2 highlight  ----
+    function highlightPadaRange2(padaIndex) {
+      clearAllHighlights();
+      [0,54].forEach(offset=>{
+        let idx=((padaIndex-1+offset)%108)+1;
+        if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-interactive');
+      });
+      let rasiIdx=Math.ceil(padaIndex/9); // 1..12
+      document.querySelector(`.box[data-rasi-idx="${rasiIdx}"]`)?.classList.add('active-rasi-cyclic');
+      let rasi7=((rasiIdx+6-1)%12)+1;
+      document.querySelector(`.box[data-rasi-idx="${rasi7}"]`)?.classList.add('active-rasi-cyclic');
+  
     }
 
     // ---------- DASA TREE RENDER with Date & Neat Indent, and CLICK-TO-HIGHLIGHT ----------

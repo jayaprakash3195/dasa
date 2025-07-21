@@ -6,10 +6,10 @@
   <style>
     body { font-family: 'Latha', Arial, sans-serif; background: #fffef8; text-align: center; padding: 18px; margin: 0;}
     .south-chart { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-areas:
-        "r10  r11  r12  r01"
-        "r09  xx   xx   r02"
-        "r08  xx   xx   r03"
-        "r07  r06  r05  r04";
+        "r12  r01  r02  r03"
+        "r11  xx   xx   r04"
+        "r10  xx   xx   r05"
+        "r09  r08  r07  r06";
       gap: 5px; max-width: 940px; margin: 0 auto 22px;}
 
     .box { background: #fffdf5; border: 2px solid #ce0808; border-radius: 10px; box-shadow: 0 2px 5px rgba(100, 85, 50, 0.1);
@@ -71,8 +71,8 @@
     .padasplit u {font-weight: bold; color: #444;}
     button[type=submit] { background: #2f76d2; color: white; border: none; padding: 6px 12px; border-radius: 5px; font-size: 14px; cursor: pointer; box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1); transition: background 0.2s ease;}
     button[type=submit]:hover {background: #195ea8;}
-    .r01 { grid-area: r11; } .r02 { grid-area: r12; } .r03 { grid-area: r01; } .r04 { grid-area: r02; } .r05 { grid-area: r03; } .r06 { grid-area: r04; }
-    .r07 { grid-area: r05; } .r08 { grid-area: r06; } .r09 { grid-area: r07; } .r10 { grid-area: r08; } .r11 { grid-area: r09; } .r12 { grid-area: r10; }
+    .r01 { grid-area: r01; } .r02 { grid-area: r02; } .r03 { grid-area: r03; } .r04 { grid-area: r04; } .r05 { grid-area: r05; } .r06 { grid-area: r06; }
+    .r07 { grid-area: r07; } .r08 { grid-area: r08; } .r09 { grid-area: r09; } .r10 { grid-area: r10; } .r11 { grid-area: r11; } .r12 { grid-area: r12; }
     @media (max-width: 900px) {
       .box { height: auto; }
       .south-chart {
